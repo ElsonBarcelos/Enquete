@@ -1,0 +1,25 @@
+<div class="page-header">
+	<h1>Enquete Lista</h1>
+</div>
+<div class="row">
+	<div class="col-xs-5">
+		<a href="#/new" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Nova Enquete</a>
+	</div>
+	<div class="col-xs-7">
+		<input type="text" class="form-control" ng-model="query" placeholder="Filtrar Enquetes">
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12"><hr></div>
+</div>
+<div class="row" ng-switch on="polls.length">
+	<ul ng-switch-when="0">
+		<li><em>Nao ha pesquisas em bancos de dados. Você gostaria de<a href="#/new">Criar uma</a>?</li>
+	</ul>
+	<ul ng-switch-default>
+		<li ng-repeat="poll in polls | filter:query">
+			<a href="#/poll/{{poll._id}}">{{poll.question}}</a>
+		</li>
+	</ul>
+</div>
+<p>&nbsp;</p>
